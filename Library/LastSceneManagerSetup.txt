@@ -1,0 +1,5 @@
+sceneSetups:
+- path: C:/Users/garcia.madav/Unitu2Dam/Unity2Dam/Mi_mundo/Assets/Scenes/copia.unity
+  isLoaded: 1
+  isActive: 1
+  isSubScene: 0
