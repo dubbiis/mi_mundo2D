@@ -6,6 +6,7 @@ TagManager:
   tags:
   - enemigo
   - conseguible
+  - contador
   layers:
   - Default
   - TransparentFX

@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Contador : MonoBehaviour
 {
-    public Text textoContador;
-    private int contador = 0;
+    public TMP_Text textoContador;
+    public int contador = 0;
 
-    void Start()
+    void Update()
     {
         ActualizarTextoContador();
+
     }
 
     public void IncrementarContador()

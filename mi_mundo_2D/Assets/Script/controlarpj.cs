@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class controlarpj : MonoBehaviour
@@ -12,6 +13,9 @@ public class controlarpj : MonoBehaviour
     public bool isLookingRight = true;
     private bool isGrounded;
     private bool doubleJumped = false;
+    private AudioSource audiosource;
+    public AudioClip jumClip;
+    public AudioClip coin;
 
     PlayerAnimationController animationController; // Referencia al script de control de animaciones
 
@@ -22,6 +26,7 @@ public class controlarpj : MonoBehaviour
         // Obtener la referencia al script de control de animaciones
         animationController = GetComponent<PlayerAnimationController>();
         rigidBody = GetComponent<Rigidbody2D>();
+        audiosource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -56,6 +61,11 @@ public class controlarpj : MonoBehaviour
                 rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
                 isGrounded = false;
                 doubleJumped = false; // Resetea el estado de doble salto
+                //sonido
+                audiosource.PlayOneShot(jumClip);
+             
+                
+
             }
             else if (!doubleJumped)
             {
