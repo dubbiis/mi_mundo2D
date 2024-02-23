@@ -23,7 +23,7 @@ public class PlayerAnimationController : MonoBehaviour
         // Actualizar las variables de la animación
         animator.SetBool("isGrounded", isGrounded);
         animator.SetFloat("verticalSpeed", rb.velocity.y);
-
+            animator.SetBool("isGrounded", isGrounded);
         // Cambiar la animación de acuerdo al estado del personaje
         if (isGrounded)
         {
@@ -45,7 +45,7 @@ public class PlayerAnimationController : MonoBehaviour
         {
             // Si el personaje está en el aire, reproducir la animación de saltar
             animator.SetBool("pj_quieto", false);
-            animator.SetBool("saltar", true);
+
 
             // Verificar si el personaje ha realizado un doble salto
             if (!hasDoubleJumped && rb.velocity.y < -0.1f)

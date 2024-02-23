@@ -11,22 +11,21 @@ public class controlarpj : MonoBehaviour
     Rigidbody2D rigidBody;
     private float inputMovement;
     public bool isLookingRight = true;
-    private bool isGrounded;
+    public bool isGrounded;
     private bool doubleJumped = false;
     private AudioSource audiosource;
     public AudioClip jumClip;
     public AudioClip coin;
 
-    PlayerAnimationController animationController; // Referencia al script de control de animaciones
-
+    Animator animator;
      
 
     private void Start()
     {
         // Obtener la referencia al script de control de animaciones
-        animationController = GetComponent<PlayerAnimationController>();
         rigidBody = GetComponent<Rigidbody2D>();
         audiosource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -34,6 +33,7 @@ public class controlarpj : MonoBehaviour
     {
         ProcessingMovement();
         Jump();
+        animator.SetBool("isGrounded", isGrounded);
     }
 
     void CharacterOrientation(float inputMovement)
@@ -56,6 +56,7 @@ public class controlarpj : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+
             if (isGrounded)
             {
                 rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
@@ -63,13 +64,12 @@ public class controlarpj : MonoBehaviour
                 doubleJumped = false; // Resetea el estado de doble salto
                 //sonido
                 audiosource.PlayOneShot(jumClip);
-             
+
                 
 
             }
             else if (!doubleJumped)
             {
-                animationController.ActivateDoubleJump();
                 rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
                 doubleJumped = true; // Marca que se ha realizado un doble salto
             }
